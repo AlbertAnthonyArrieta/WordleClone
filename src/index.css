@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -53,7 +54,6 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #528D4F;
   padding: 20px;
   width: 25px;
   height: 25px;
@@ -62,15 +62,33 @@ h1 {
   font-weight: bold;
 }
 
+.tile-correct {
+  background-color: #528D4F;
+}
+
+.tile-close {
+  background-color: #B49E3B;
+}
+
+.tile-wrong {
+  background-color: #3B3B3C;
+}
+
+.tile-default {
+  background-color: #121312;
+  border: solid 2px #3B3B3C;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

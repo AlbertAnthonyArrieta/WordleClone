@@ -1,7 +1,17 @@
-export const Tile = ({color, letter}) => {
+export const Tile = ({ color, letter }) => {
     return (
         <>
-            <div className="tile">
+            <div className={
+                color === "correct" ? (
+                    "tile tile-correct"
+                ) : color === "close" ? (
+                    "tile tile-close"
+                ) : color === "wrong" ? (
+                    "tile tile-wrong"
+                ) : (
+                    "tile tile-default"
+                )
+            }>
                 {letter}
             </div>
         </>

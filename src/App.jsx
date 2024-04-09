@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import './App.css'
-import Tile from './components/Tile.jsx';
+import Row from './components/Row.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
-
+// Just finished making row component
   return (
     <>
       <div className='header'>
@@ -12,41 +12,11 @@ function App() {
       </div>
       <div className='game'>
         <div className='board'>
-          <div className='row'>
-            <Tile letter='C' />
-            <Tile letter='R' />
-            <Tile letter='E' />
-            <Tile letter='A' />
-            <Tile letter='M' />
-          </div>
-          <div className='row'>
-            <Tile letter='C' />
-            <Tile letter='R' />
-            <Tile letter='E' />
-            <Tile letter='A' />
-            <Tile letter='M' />
-          </div>
-          <div className='row'>
-            <Tile letter='C' />
-            <Tile letter='R' />
-            <Tile letter='E' />
-            <Tile letter='A' />
-            <Tile letter='M' />
-          </div>
-          <div className='row'>
-            <Tile letter='C' />
-            <Tile letter='R' />
-            <Tile letter='E' />
-            <Tile letter='A' />
-            <Tile letter='M' />
-          </div>
-          <div className='row'>
-            <Tile letter='C' />
-            <Tile letter='R' />
-            <Tile letter='E' />
-            <Tile letter='A' />
-            <Tile letter='M' />
-          </div>
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
         </div>
       </div>
     </>
