@@ -1,8 +1,10 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import './App.css'
+import TargetContext from './contexts/TargetContext.jsx';
 import Row from './components/Row.jsx';
 
 function App() {
+  const [target, setTarget] = useState("CREAM");
 
   const [input, setInput] = useState();
 
@@ -12,12 +14,16 @@ function App() {
     inputRef.current.focus();
   }, []);
 
-  const updateWord = (input) => {
+  const handleInput = (input) => {
     setInput(input.target.value);
   }
 
   const handleBlur = () => {
     inputRef.current.focus();
+  }
+
+  const handleSubmit = (input) => {
+    alert('submitted!');
   }
 
   return (
@@ -26,13 +32,17 @@ function App() {
         <h1>WORDLE</h1>
       </div>
       <div className='game'>
-        <input autoFocus={true} ref={inputRef} onBlur={handleBlur} type='text' maxLength='5' onChange={updateWord}></input>
+        <form onSubmit={handleSubmit}>
+          <input autoFocus={true} ref={inputRef} onBlur={handleBlur} type='text' maxLength='5' onChange={handleInput}></input>
+        </form>
         <div className='board'>
-          <Row word={input}/>
-          <Row />
-          <Row />
-          <Row />
-          <Row />
+          <TargetContext.Provider value={target}>
+            <Row word={input} target={target} />
+            <Row />
+            <Row />
+            <Row />
+            <Row />
+          </TargetContext.Provider>
         </div>
       </div>
     </>

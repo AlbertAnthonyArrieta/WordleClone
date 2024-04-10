@@ -1,15 +1,21 @@
-export const Tile = ({ color, letter }) => {
+import { useContext } from "react"
+import TargetContext from "../contexts/TargetContext";
+
+export const Tile = ({ letter, pos}) => {
+
+    const target = useContext(TargetContext);
+
     return (
         <>
             <div className={
-                color === "correct" ? (
+                letter === target.charAt(pos) ? (
                     "tile tile-correct"
-                ) : color === "close" ? (
+                ) : target.includes(letter) && letter !== '' ? (
                     "tile tile-close"
-                ) : color === "wrong" ? (
-                    "tile tile-wrong"
-                ) : (
+                ) : letter === '' ? (
                     "tile tile-default"
+                ) : (
+                    "tile tile-wrong"
                 )
             }>
                 {letter}

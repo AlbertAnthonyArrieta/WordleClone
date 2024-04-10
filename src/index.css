@@ -66,7 +66,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   width: 25px;
   height: 25px;
   border-radius: 2px;
@@ -76,14 +76,17 @@ h1 {
 
 .tile-correct {
   background-color: #528D4F;
+  border: solid 2px #528D4F;
 }
 
 .tile-close {
   background-color: #B49E3B;
+  border: solid 2px #B49E3B;
 }
 
 .tile-wrong {
   background-color: #3B3B3C;
+  border: solid 2px #3B3B3C;
 }
 
 .tile-default {
