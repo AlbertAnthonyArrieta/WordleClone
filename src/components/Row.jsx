@@ -1,16 +1,20 @@
 import Tile from "./Tile.jsx";
-export const Row = () => {
+export const Row = ({ word }) => {
     return (
         <>
             <div className='row'>
-                <Tile letter='C' color="correct" />
-                <Tile letter='R' />
-                <Tile letter='E' />
-                <Tile letter='A' />
-                <Tile letter='M' />
+                <Tile letter={word.toUpperCase().charAt(0)} />
+                <Tile letter={word.toUpperCase().charAt(1)} />
+                <Tile letter={word.toUpperCase().charAt(2)} />
+                <Tile letter={word.toUpperCase().charAt(3)} />
+                <Tile letter={word.toUpperCase().charAt(4)} />
             </div>
         </>
     )
+}
+
+Row.defaultProps = {
+    word: ''
 }
 
 export default Row;
