@@ -28,8 +28,10 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setAttempts([...attempts, event.target.answer.value]);
+    setAttempts([...attempts, event.target.answer.value.toUpperCase()]);
     setActiveRow(activeRow + 1);
+    event.target.answer.value = '';
+    setInput('');
     console.log(attempts);
   }
 
@@ -46,11 +48,11 @@ function App() {
         </form>
         <div className='board'>
           <TargetContext.Provider value={target}>
+            <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={0} />
             <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={1} />
             <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={2} />
-            <Row />
-            <Row />
-            <Row />
+            <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={3} />
+            <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={4} />
           </TargetContext.Provider>
         </div>
       </div>
