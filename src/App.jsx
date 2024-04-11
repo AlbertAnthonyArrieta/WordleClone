@@ -8,6 +8,10 @@ function App() {
 
   const [input, setInput] = useState();
 
+  const [activeRow, setActiveRow] = useState(0);
+
+  const [attempts, setAttempts] = useState([]);
+
   const inputRef = useRef();
 
   useEffect(() => {
@@ -22,9 +26,14 @@ function App() {
     inputRef.current.focus();
   }
 
-  const handleSubmit = (input) => {
-    alert('submitted!');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setAttempts([...attempts, event.target.answer.value]);
+    setActiveRow(activeRow + 1);
+    console.log(attempts);
   }
+
+  // attempts are now saving, but ghost is being saved all the time and something wrong with the activeRow
 
   return (
     <>
@@ -33,12 +42,12 @@ function App() {
       </div>
       <div className='game'>
         <form onSubmit={handleSubmit}>
-          <input autoFocus={true} ref={inputRef} onBlur={handleBlur} type='text' maxLength='5' onChange={handleInput}></input>
+          <input name="answer" autoFocus={true} ref={inputRef} onBlur={handleBlur} type='text' maxLength='5' onChange={handleInput}></input>
         </form>
         <div className='board'>
           <TargetContext.Provider value={target}>
-            <Row word={input} target={target} />
-            <Row />
+            <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={1} />
+            <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={2} />
             <Row />
             <Row />
             <Row />
