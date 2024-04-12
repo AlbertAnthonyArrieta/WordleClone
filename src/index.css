@@ -94,6 +94,39 @@ h1 {
   border: solid 2px #3B3B3C;
 }
 
+button {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-black {
+  background-color: #3B3B3C;
+}
+
+.btn-green {
+  background-color: #528D4F;
+}
+
+.btn-black:hover {
+  background-color: #373737;
+  cursor: pointer;
+}
+
+.btn-green:hover {
+  background-color: #547e52;
+  cursor: pointer;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

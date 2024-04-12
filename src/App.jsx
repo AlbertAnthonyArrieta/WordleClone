@@ -3,6 +3,10 @@ import './App.css'
 import TargetContext from './contexts/TargetContext.jsx';
 import Row from './components/Row.jsx';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
+
 function App() {
 
   const [gameState, setGameState] = useState(0);
@@ -29,14 +33,24 @@ function App() {
     inputRef.current.focus();
   }
 
+  const resetGame = () => {
+    console.log("Game Reset...");
+    setActiveRow(0);
+    setAttempts([]);
+    setInput('');
+    setGameState(0);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setAttempts([...attempts, event.target.answer.value.toUpperCase()]);
     setActiveRow(activeRow + 1);
     console.log(activeRow);
 
+    // Win/Lose determination
     if (event.target.answer.value.toUpperCase() === target) {
       setGameState(1);
+
     } else if (activeRow > 3) {
       setGameState(2);
     } else {
@@ -47,8 +61,6 @@ function App() {
     setInput('');
     console.log(attempts);
   }
-
-  // attempts are now saving, but ghost is being saved all the time and something wrong with the activeRow
 
   return (
     <>
@@ -73,11 +85,16 @@ function App() {
             <div>
               <h2>You WIN!</h2>
               <h1>The word is <span>{target}</span></h1>
+              <div className='btn-container'>
+                <button className='btn-green' onClick={resetGame}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
+                <button className='btn-black' onClick={resetGame}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
+              </div>
             </div>
           ) : gameState === 2 ? (
             <div>
               <h2>YOU LOSE!</h2>
               <h1>The word is <span>{target}</span></h1>
+              <button className='btn-black' onClick={resetGame}>PLAY AGAIN </button>
             </div>
           ) : (
             <div>
