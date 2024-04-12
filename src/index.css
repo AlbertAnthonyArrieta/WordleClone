@@ -54,6 +54,7 @@ h1 {
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  margin: 20px;
 }
 
 .row {
@@ -92,6 +93,41 @@ h1 {
 .tile-default {
   background-color: #121312;
   border: solid 2px #3B3B3C;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.key {
+  background-color: #808284;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  width: 8px;
+  height: 25px;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.long-key {
+  width: 30px;
+  font-size: 16px;
 }
 
 button {
