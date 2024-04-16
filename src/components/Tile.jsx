@@ -5,6 +5,8 @@ export const Tile = ({ active, letter, pos }) => {
 
     const target = useContext(TargetContext);
 
+    
+
     return (
         <>
             <div className={

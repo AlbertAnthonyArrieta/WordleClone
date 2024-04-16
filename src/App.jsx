@@ -76,53 +76,53 @@ function App() {
 
         {gameState === 0 ? (
           <div>
-            <div className='board'>
-              <TargetContext.Provider value={target}>
+            <TargetContext.Provider value={target}>
+              <div className='board'>
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={0} />
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={1} />
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={2} />
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={3} />
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={4} />
-              </TargetContext.Provider>
-            </div>
-
-            <div className='keyboard'>
-              <div className='keyboard-row'>
-                <Key letter='Q' />
-                <Key letter='W' />
-                <Key letter='E' />
-                <Key letter='R' />
-                <Key letter='T' />
-                <Key letter='Y' />
-                <Key letter='U' />
-                <Key letter='I' />
-                <Key letter='O' />
-                <Key letter='P' />
-              </div>
-              <div className='keyboard-row'>
-                <Key letter='A' />
-                <Key letter='S' />
-                <Key letter='D' />
-                <Key letter='F' />
-                <Key letter='G' />
-                <Key letter='H' />
-                <Key letter='J' />
-                <Key letter='K' />
-                <Key letter='L' />
-              </div>
-              <div className='keyboard-row'>
-                <Key long='true' letter='ENTER' />
-                <Key letter='Z' />
-                <Key letter='X' />
-                <Key letter='C' />
-                <Key letter='V' />
-                <Key letter='B' />
-                <Key letter='N' />
-                <Key letter='M' />
-                <Key long='true' letter={<FontAwesomeIcon icon={faDeleteLeft} />} />
               </div>
 
-            </div>
+              <div className='keyboard'>
+                <div className='keyboard-row'>
+                  <Key letter='Q' attempts={attempts} />
+                  <Key letter='W' attempts={attempts} />
+                  <Key letter='E' attempts={attempts} />
+                  <Key letter='R' attempts={attempts} />
+                  <Key letter='T' attempts={attempts} />
+                  <Key letter='Y' attempts={attempts} />
+                  <Key letter='U' attempts={attempts} />
+                  <Key letter='I' attempts={attempts} />
+                  <Key letter='O' attempts={attempts} />
+                  <Key letter='P' attempts={attempts} />
+                </div>
+                <div className='keyboard-row'>
+                  <Key letter='A' attempts={attempts} />
+                  <Key letter='S' attempts={attempts} />
+                  <Key letter='D' attempts={attempts} />
+                  <Key letter='F' attempts={attempts} />
+                  <Key letter='G' attempts={attempts} />
+                  <Key letter='H' attempts={attempts} />
+                  <Key letter='J' attempts={attempts} />
+                  <Key letter='K' attempts={attempts} />
+                  <Key letter='L' attempts={attempts} />
+                </div>
+                <div className='keyboard-row'>
+                  {/* <Key long='true' letter='ENTER' /> */}
+                  <Key letter='Z' attempts={attempts} />
+                  <Key letter='X' attempts={attempts} />
+                  <Key letter='C' attempts={attempts} />
+                  <Key letter='V' attempts={attempts} />
+                  <Key letter='B' attempts={attempts} />
+                  <Key letter='N' attempts={attempts} />
+                  <Key letter='M' attempts={attempts} />
+                  {/* <Key long='true' letter={<FontAwesomeIcon icon={faDeleteLeft} />} /> */}
+                </div>
+
+              </div>
+            </TargetContext.Provider>
           </div>
 
         ) : gameState === 1 ? (
