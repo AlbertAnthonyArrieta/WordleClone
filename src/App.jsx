@@ -12,15 +12,11 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 function App() {
 
   const [gameState, setGameState] = useState(0);
-
   const [target, setTarget] = useState("CREAM");
-
   const [input, setInput] = useState();
-
   const [activeRow, setActiveRow] = useState(0);
-
   const [attempts, setAttempts] = useState([]);
-
+  
   const inputRef = useRef();
 
   useEffect(() => {
@@ -87,38 +83,38 @@ function App() {
 
               <div className='keyboard'>
                 <div className='keyboard-row'>
-                  <Key letter='Q' attempts={attempts} />
-                  <Key letter='W' attempts={attempts} />
-                  <Key letter='E' attempts={attempts} />
-                  <Key letter='R' attempts={attempts} />
-                  <Key letter='T' attempts={attempts} />
-                  <Key letter='Y' attempts={attempts} />
-                  <Key letter='U' attempts={attempts} />
-                  <Key letter='I' attempts={attempts} />
-                  <Key letter='O' attempts={attempts} />
-                  <Key letter='P' attempts={attempts} />
+                  <Key letter='Q' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='W' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='E' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='R' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='T' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='Y' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='U' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='I' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='O' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='P' attempts={attempts} activeRow={activeRow} />
                 </div>
                 <div className='keyboard-row'>
-                  <Key letter='A' attempts={attempts} />
-                  <Key letter='S' attempts={attempts} />
-                  <Key letter='D' attempts={attempts} />
-                  <Key letter='F' attempts={attempts} />
-                  <Key letter='G' attempts={attempts} />
-                  <Key letter='H' attempts={attempts} />
-                  <Key letter='J' attempts={attempts} />
-                  <Key letter='K' attempts={attempts} />
-                  <Key letter='L' attempts={attempts} />
+                  <Key letter='A' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='S' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='D' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='F' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='G' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='H' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='J' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='K' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='L' attempts={attempts} activeRow={activeRow} />
                 </div>
                 <div className='keyboard-row'>
-                  {/* <Key long='true' letter='ENTER' /> */}
-                  <Key letter='Z' attempts={attempts} />
-                  <Key letter='X' attempts={attempts} />
-                  <Key letter='C' attempts={attempts} />
-                  <Key letter='V' attempts={attempts} />
-                  <Key letter='B' attempts={attempts} />
-                  <Key letter='N' attempts={attempts} />
-                  <Key letter='M' attempts={attempts} />
-                  {/* <Key long='true' letter={<FontAwesomeIcon icon={faDeleteLeft} />} /> */}
+                  <Key long='true' letter='ENTER' />
+                  <Key letter='Z' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='X' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='C' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='V' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='B' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='N' attempts={attempts} activeRow={activeRow} />
+                  <Key letter='M' attempts={attempts} activeRow={activeRow} />
+                  <Key long='true' letter={<FontAwesomeIcon icon={faDeleteLeft} />} />
                 </div>
 
               </div>

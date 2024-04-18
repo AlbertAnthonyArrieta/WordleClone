@@ -1,5 +1,5 @@
 import Tile from "./Tile.jsx";
-export const Row = ({ activeRow, word, target, attempts, rowNum }) => {
+export const Row = ({ activeRow, word, attempts, rowNum }) => {
     let l0 = word.toUpperCase().charAt(0);
     let l1 = word.toUpperCase().charAt(1);
     let l2 = word.toUpperCase().charAt(2);
