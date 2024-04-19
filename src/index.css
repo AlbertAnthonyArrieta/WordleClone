@@ -37,7 +37,6 @@ input:focus {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -178,17 +177,136 @@ button {
   cursor: pointer;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (max-width: 830px) {
+  .tile {
+    padding: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 30px;
   }
 
-  a:hover {
-    color: #747bff;
+  .keyboard {
+    gap: 8px;
+  }
+
+  .keyboard-row {
+    gap: 8px;
+  }
+
+  .key {
+    padding: 20px;
+    width: 6px;
+    height: 20px;
+    font-size: 20px;
+  }
+
+  .long-key {
+    width: 25px;
+    font-size: 14px;
   }
 
   button {
-    background-color: #f9f9f9;
+    font-size: 16px;
+    padding: 15px 30px;
+  }
+}
+
+@media (max-width: 680px) {
+
+  #root {
+    padding: 0;
+    margin: 0;
+  }
+
+  .body {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header {
+    margin-top: 100px;
+  }
+
+  .game {
+    margin: 0;
+  }
+
+  .keyboard {
+    margin: 0;
+  }
+
+  .long-key {
+    width: 20px;
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+
+@media (max-width: 550px) {
+
+  .keyboard {
+    gap: 5px;
+    margin-top: 100px;
+  }
+
+  .keyboard-row {
+    gap: 5px;
+  }
+
+  .key {
+    padding: 20px;
+    width: 5px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .long-key {
+    width: 15px;
+    font-size: 10px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 510px) {
+  .keyboard {
+    gap: 5px;
+    margin-top: 100px;
+  }
+
+  .keyboard-row {
+    gap: 5px;
+  }
+
+  .tile{
+    padding: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 30px;
+  }
+
+  .key {
+    padding: 14px;
+    width: 10px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .long-key {
+    width: 30px;
+    font-size: 10px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 10px 15px;
   }
 }
