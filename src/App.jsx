@@ -13,18 +13,18 @@ function App() {
 
   const [gameState, setGameState] = useState(0);
   const [target, setTarget] = useState("CREAM");
-  const [input, setInput] = useState();
+  const [input, setInput] = useState('');
   const [activeRow, setActiveRow] = useState(0);
   const [attempts, setAttempts] = useState([]);
-  
-  const inputRef = useRef();
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
 
-  const handleInput = (input) => {
-    setInput(input.target.value);
+  const handleTap = (letter) => {
+    console.log(input + letter);
+    setInput(input + letter);
+  }
+
+  const handleDelete = () => {
+    setInput(input.slice(0, -1));
   }
 
   const handleBlur = () => {
@@ -39,14 +39,13 @@ function App() {
     setGameState(0);
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setAttempts([...attempts, event.target.answer.value.toUpperCase()]);
+  const handleSubmit = () => {
+    setAttempts([...attempts, input]);
     setActiveRow(activeRow + 1);
     console.log(activeRow);
 
     // Win/Lose determination
-    if (event.target.answer.value.toUpperCase() === target) {
+    if (input === target) {
       setGameState(1);
 
     } else if (activeRow > 3) {
@@ -55,7 +54,6 @@ function App() {
       setGameState(0);
     }
 
-    event.target.answer.value = '';
     setInput('');
     console.log(attempts);
   }
@@ -63,12 +61,9 @@ function App() {
   return (
     <>
       <div className='header'>
-        <h1 class="title">WORDLE</h1>
+        <h1 className="title">WORDLE</h1>
       </div>
       <div className='game'>
-        <form onSubmit={handleSubmit}>
-          <input name="answer" autoFocus={true} ref={inputRef} onBlur={handleBlur} type='text' maxLength='5' onChange={handleInput}></input>
-        </form>
 
         {gameState === 0 ? (
           <div>
@@ -83,38 +78,39 @@ function App() {
 
               <div className='keyboard'>
                 <div className='keyboard-row'>
-                  <Key letter='Q' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='W' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='E' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='R' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='T' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='Y' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='U' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='I' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='O' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='P' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='Q' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='W' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='E' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='R' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='T' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='Y' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='U' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='I' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='O' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='P' attempts={attempts} activeRow={activeRow} />
                 </div>
                 <div className='keyboard-row'>
-                  <Key letter='A' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='S' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='D' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='F' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='G' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='H' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='J' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='K' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='L' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='A' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='S' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='D' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='F' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='G' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='H' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='J' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='K' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='L' attempts={attempts} activeRow={activeRow} />
                 </div>
                 <div className='keyboard-row'>
-                  <Key long='true' letter='ENTER' />
-                  <Key letter='Z' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='X' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='C' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='V' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='B' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='N' attempts={attempts} activeRow={activeRow} />
-                  <Key letter='M' attempts={attempts} activeRow={activeRow} />
-                  <Key long='true' letter={<FontAwesomeIcon icon={faDeleteLeft} />} />
+                  <div onClick={handleSubmit} className='key long-key key-default'>ENTER</div>
+                  <Key onClick={handleTap} letter='Z' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='X' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='C' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='V' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='B' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='N' attempts={attempts} activeRow={activeRow} />
+                  <Key onClick={handleTap} letter='M' attempts={attempts} activeRow={activeRow} />
+                  <div onClick={handleDelete} className='key long-key key-default'><FontAwesomeIcon icon={faDeleteLeft} /></div>
+
                 </div>
 
               </div>

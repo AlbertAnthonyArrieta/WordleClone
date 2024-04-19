@@ -1,9 +1,13 @@
 import { useContext, useState, useEffect } from "react"
 import TargetContext from "../contexts/TargetContext";
-export const Key = ({ long, letter, attempts, activeRow }) => {
+export const Key = ({ onClick, long, letter, attempts, activeRow }) => {
 
     const target = useContext(TargetContext);
     const [letterState, setLetterState] = useState(0);
+
+    const handleClick = () => {
+        onClick(letter);
+    }
 
     useEffect(() => {
         if (Array.isArray(attempts) && attempts.length > 0) {
@@ -22,7 +26,7 @@ export const Key = ({ long, letter, attempts, activeRow }) => {
 
     return (
         <>
-            <div className={
+            <div onClick={handleClick} className={
                 long === 'true' ? (
                     "key long-key key-default"
                 ) : (
