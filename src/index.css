@@ -285,6 +285,7 @@ button {
   .title{
     margin: 0;
     margin: 20px;
+    margin-top: 0px;
     font-size: 30px;
   }
 
