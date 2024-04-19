@@ -63,7 +63,7 @@ function App() {
   return (
     <>
       <div className='header'>
-        <h1>WORDLE</h1>
+        <h1 class="title">WORDLE</h1>
       </div>
       <div className='game'>
         <form onSubmit={handleSubmit}>

@@ -282,6 +282,21 @@ button {
     margin-top: 0px;
   }
 
+  .title{
+    margin: 0;
+    margin: 20px;
+    font-size: 30px;
+  }
+
+  .board {
+    margin-top: 10px;
+  }
+
+  .h1 {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+
   .keyboard {
     margin-top: 0px;
     gap: 5px;
