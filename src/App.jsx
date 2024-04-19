@@ -58,6 +58,25 @@ function App() {
     console.log(attempts);
   }
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (/^[a-zA-Z]$/.test(event.key)) {
+        handleTap(event.key.toUpperCase());
+      } else if (event.key === 'Enter') {
+        handleSubmit();
+      } else if (event.key === 'Backspace') {
+        handleDelete();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleTap]); // Depend on `handleTap` so the effect runs again if it changes
+
   return (
     <>
       <div className='header'>
