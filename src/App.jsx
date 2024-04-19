@@ -162,8 +162,8 @@ return (
           <h2>You WIN!</h2>
           <h1>The word is <span>{target}</span></h1>
           <div className='btn-container'>
-            <button className='btn-green' onClick={copyToClipboard}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
-            <button className='btn-black' onClick={resetGame}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
+            <button className='btn-green' onClick={copyToClipboard} style={{color: 'white'}}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
+            <button className='btn-black' onClick={resetGame} style={{color: 'white'}}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
           </div>
         </div>
       ) : gameState === 2 ? (
@@ -171,8 +171,8 @@ return (
           <h2><span className='text-red'>LOSER</span> OF COURSE THE WORD IS AND ALWAYS WILL BE</h2>
           <h1><span className='text-green'>{target}</span></h1>
           <div className='btn-container'>
-            <button className='btn-green' onClick={copyToClipboard}>SHARE HOW STUPID U ARE <FontAwesomeIcon icon={faShareNodes} /></button>
-            <button className='btn-black' onClick={resetGame}>PLAY AGAIN </button>
+            <button className='btn-green' onClick={copyToClipboard} style={{color: 'white'}}>SHARE HOW STUPID U ARE <FontAwesomeIcon icon={faShareNodes} /></button>
+            <button className='btn-black' onClick={resetGame} style={{color: 'white'}}>PLAY AGAIN </button>
           </div>
         </div>
       ) : (
