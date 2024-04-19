@@ -12,14 +12,14 @@ export const Key = ({ onClick, long, letter, attempts, activeRow }) => {
     useEffect(() => {
         if (Array.isArray(attempts) && attempts.length > 0) {
             const lastAttempt = attempts[attempts.length - 1];
-            if (lastAttempt.includes(letter) && target.includes(letter)) {
+            if (lastAttempt.includes(letter)) {
                 if (lastAttempt.indexOf(letter) === target.indexOf(letter)) {
                     setLetterState(3);
-                } else {
+                } else if (target.includes(letter)) {
                     setLetterState(2);
+                } else {
+                    setLetterState(1);
                 }
-            } else {
-                setLetterState(1);
             }
         }
     }, [attempts, letter]);
@@ -27,18 +27,14 @@ export const Key = ({ onClick, long, letter, attempts, activeRow }) => {
     return (
         <>
             <div onClick={handleClick} className={
-                long === 'true' ? (
-                    "key long-key key-default"
+                letterState === 3 ? (
+                    "key key-correct"
+                ) : letterState === 2 ? (
+                    "key key-close"
+                ) : letterState === 1 ? (
+                    "key key-wrong"
                 ) : (
-                    letterState === 3 ? (
-                        "key key-correct"
-                    ) : letterState === 2 ? (
-                        "key key-close"
-                    ) : letterState === 1 ? (
-                        "key key-wrong"
-                    ) : (
-                        "key key-default"
-                    )
+                    "key key-default"
                 )
             }>
                 {letter}
