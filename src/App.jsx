@@ -102,7 +102,7 @@ function App() {
     <>
       <div className='header'>
         <h1 className="title">WORDLE</h1>
-        <div className='popup'>{popupText}</div>
+        {/* <div className='popup'>{popupText}</div> */}
       </div>
       <div className='game'>
 
