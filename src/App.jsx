@@ -12,7 +12,7 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 function App() {
 
   const [gameState, setGameState] = useState(0);
-  const [target, setTarget] = useState("CREAM");
+  const [target, setTarget] = useState("CHRIS");
   const [input, setInput] = useState('');
   const [activeRow, setActiveRow] = useState(0);
   const [attempts, setAttempts] = useState([]);
