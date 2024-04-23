@@ -47,15 +47,27 @@ h1 {
   line-height: 1.1;
 }
 
-
-.text-red {
-  color: red;
-  font-size: 50px;
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
-.text-green {
-  color: rgb(0, 255, 0);
-  font-size: 100px;
+.title {
+  margin-bottom: 10px;
+}
+
+.popup {
+  position: absolute;
+  text-align: center;
+  font-size: 15px;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  color: #121312;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-top: 100px;
 }
 
 .board {
