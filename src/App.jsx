@@ -12,11 +12,12 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 function App() {
 
   const [gameState, setGameState] = useState(0);
-  const [target, setTarget] = useState("CHULO");
+  const [target, setTarget] = useState("FLAME");
   const [input, setInput] = useState('');
   const [activeRow, setActiveRow] = useState(0);
   const [attempts, setAttempts] = useState([]);
   const [popupText, setPopupText] = useState('Not Enough Letters.');
+  const [results, setResults] = useState([]);
 
 
   // Tap/Click Handlers
@@ -41,18 +42,68 @@ function App() {
     setGameState(0);
   }
 
+  const activatePopup = () => {
+    document.querySelector('.popup').style.display = 'block';
+    setTimeout(() => {
+      document.querySelector('.popup').style.display = 'none';
+      setPopupText('');
+    }, 2000);
+  }
+
+  const collectResults = () => {
+    for (let i = 0; i < attempts.length; i++) {
+      let currentAttempt = attempts[i];
+      let currentRow = '';
+      for (let j = 0; j < currentAttempt.length+1; j++) {
+        if (currentAttempt[j] === target[j]) {
+          currentRow = currentRow + 'G';
+        } else if (target.includes(currentAttempt[j])) {
+          currentRow = currentRow + 'Y';
+        } else {
+          currentRow = currentRow + 'B';
+        }
+      }
+      setResults([...results, currentRow]);
+    }
+    console.log(results[0]);
+    console.log(results[1]);
+    console.log(results[2]);
+    console.log(results[3]);
+    console.log(results[4]);
+    console.log(results[5]);
+  }
+
   // Submt Word and verification
   const handleSubmit = () => {
+
+    // Check if input is 5 characters
+    if (input.length !== 5) {
+      setPopupText('Not Enough Letters.');
+      activatePopup();
+      return;
+    }
+
+    // Check if input already exists in attempts
+    for (let i = 0; i < attempts.length; i++) {
+      if (input === attempts[i]) {
+        setPopupText('You already tried that word!');
+        activatePopup();
+        return;
+      }
+    }
+
     // Save answer to arrempts and switch active row
     setAttempts([...attempts, input]);
     setActiveRow(activeRow + 1);
 
     // Win/Lose determination
     if (input === target) {
+      collectResults();
       setGameState(1);
 
     } else if (activeRow > 4) {
       setGameState(2);
+      collectResults();
     } else {
       setGameState(0);
     }
@@ -105,7 +156,7 @@ function App() {
     <>
       <div className='header'>
         <h1 className="title">WORDLE</h1>
-        {/* <div className='popup'>{popupText}</div> */}
+        <div className='popup'>{popupText}</div>
       </div>
       <div className='game'>
 
