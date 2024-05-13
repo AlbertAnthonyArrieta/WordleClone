@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import TargetContext from './contexts/TargetContext.jsx';
 import Row from './components/Row.jsx';
@@ -19,19 +19,20 @@ function App() {
   const [popupText, setPopupText] = useState('Not Enough Letters.');
 
 
+  // Tap/Click Handlers
   const handleTap = (letter) => {
-    console.log(input + letter);
-    setInput(input + letter);
+    if (input.length < 5) {
+      setInput(input + letter);
+    }
+    
   }
 
+  // Delete selected Letter
   const handleDelete = () => {
     setInput(input.slice(0, -1));
   }
 
-  const handleBlur = () => {
-    inputRef.current.focus();
-  }
-
+  // Reset Game Function
   const resetGame = () => {
     console.log("Game Reset...");
     setActiveRow(0);
@@ -40,25 +41,26 @@ function App() {
     setGameState(0);
   }
 
+  // Submt Word and verification
   const handleSubmit = () => {
+    // Save answer to arrempts and switch active row
     setAttempts([...attempts, input]);
     setActiveRow(activeRow + 1);
-    console.log(activeRow);
 
     // Win/Lose determination
     if (input === target) {
       setGameState(1);
 
-    } else if (activeRow > 3) {
+    } else if (activeRow > 4) {
       setGameState(2);
     } else {
       setGameState(0);
     }
-
+    // Reset input
     setInput('');
-    console.log(attempts);
   }
 
+  // Copy to Clipboard Function
   const copyToClipboard = () => {
     if (gameState === 1) {
       navigator.clipboard.writeText("Wordle: I guessed the word on attempt number " + activeRow + "! Can you do better? https://wurdle-4b514c.netlify.app/")
@@ -81,6 +83,8 @@ function App() {
   };
 
   useEffect(() => {
+
+    // Handle keyboard inputs
     const handleKeyDown = (event) => {
       if (/^[a-zA-Z]$/.test(event.key)) {
         handleTap(event.key.toUpperCase());
@@ -96,7 +100,6 @@ function App() {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [handleTap]);
-
 
   return (
     <>
@@ -115,6 +118,7 @@ function App() {
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={2} />
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={3} />
                 <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={4} />
+                <Row activeRow={activeRow} word={input} target={target} attempts={attempts} rowNum={5} />
               </div>
 
               <div className='keyboard'>
