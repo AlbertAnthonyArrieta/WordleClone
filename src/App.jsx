@@ -12,12 +12,11 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 function App() {
 
   const [gameState, setGameState] = useState(0);
-  const [target, setTarget] = useState("FLAME");
+  const [target, setTarget] = useState("KHYLE");
   const [input, setInput] = useState('');
   const [activeRow, setActiveRow] = useState(0);
   const [attempts, setAttempts] = useState([]);
   const [popupText, setPopupText] = useState('Not Enough Letters.');
-  const [results, setResults] = useState([]);
 
 
   // Tap/Click Handlers
