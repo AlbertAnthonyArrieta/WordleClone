@@ -12,7 +12,7 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 function App() {
 
   const [gameState, setGameState] = useState(0);
-  const [target, setTarget] = useState("KHYLE");
+  const [target, setTarget] = useState("YELLOWLIGHTS"); // Change target word to 12 letters
   const [input, setInput] = useState('');
   const [activeRow, setActiveRow] = useState(0);
   const [attempts, setAttempts] = useState([]);
@@ -21,7 +21,7 @@ function App() {
 
   // Tap/Click Handlers
   const handleTap = (letter) => {
-    if (input.length < 5) {
+    if (input.length < 12) {
       setInput(input + letter);
     }
     
@@ -74,39 +74,40 @@ function App() {
 
   // Submt Word and verification
   const handleSubmit = () => {
-
-    // Check if input is 5 characters
-    if (input.length !== 5) {
-      setPopupText('Not Enough Letters.');
-      activatePopup();
-      return;
+    // Check if input is 12 characters
+    if (input.length !== 12) {
+        setPopupText('Not Enough Letters.');
+        activatePopup();
+        return;
     }
 
     // Check if input already exists in attempts
     for (let i = 0; i < attempts.length; i++) {
-      if (input === attempts[i]) {
-        setPopupText('You already tried that word!');
-        activatePopup();
-        return;
-      }
+        if (input === attempts[i]) {
+            setPopupText('You already tried that word!');
+            activatePopup();
+            return;
+        }
     }
 
-    // Save answer to arrempts and switch active row
-    setAttempts([...attempts, input]);
-    setActiveRow(activeRow + 1);
+    // Add current attempt
+    const newAttempts = [...attempts, input];
+    setAttempts(newAttempts);
 
-    // Win/Lose determination
+    // Check for win condition
     if (input === target) {
-      collectResults();
-      setGameState(1);
-
-    } else if (activeRow > 4) {
-      setGameState(2);
-      collectResults();
-    } else {
-      setGameState(0);
+        setGameState(1);
+        return;
     }
-    // Reset input
+
+    // Check for lose condition (6 attempts made)
+    if (activeRow >= 5) {
+        setGameState(2);
+        return;
+    }
+
+    // Continue game
+    setActiveRow(activeRow + 1);
     setInput('');
   }
 
@@ -154,7 +155,7 @@ function App() {
   return (
     <>
       <div className='header'>
-        <h1 className="title">WORDLE</h1>
+        <h1 className="title">CM ZINE RIDDLE</h1>
         <div className='popup'>{popupText}</div>
       </div>
       <div className='game'>

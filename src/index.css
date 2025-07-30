@@ -78,44 +78,53 @@ h1 {
   flex-direction: column;
   gap: 10px;
   margin: 20px;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .row {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;  /* Reduced gap to fit more tiles */
+  flex-wrap: nowrap;
+}
+
+/* Add this new class for the gap */
+.row > .tile:nth-child(6) {
+  margin-right: 20px;
 }
 
 .tile {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px;
-  width: 25px;
-  height: 25px;
+  padding: 15px;  /* Slightly reduced size */
+  width: 15px;
+  height: 15px;
   border-radius: 2px;
-  font-size: 40px;
+  font-size: 24px;  /* Slightly reduced font size */
   font-weight: bold;
+  flex-shrink: 0;
 }
 
 .tile-correct {
-  background-color: #528D4F;
-  border: solid 2px #528D4F;
+  background-color: #528d4f;
+  border: solid 2px #528d4f;
 }
 
 .tile-close {
-  background-color: #B49E3B;
-  border: solid 2px #B49E3B;
+  background-color: #b49e3b;
+  border: solid 2px #b49e3b;
 }
 
 .tile-wrong {
-  background-color: #3B3B3C;
-  border: solid 2px #3B3B3C;
+  background-color: #3b3b3c;
+  border: solid 2px #3b3b3c;
 }
 
 .tile-default {
   background-color: #121312;
-  border: solid 2px #3B3B3C;
+  border: solid 2px #3b3b3c;
 }
 
 .keyboard {
@@ -152,15 +161,15 @@ h1 {
 }
 
 .key-correct {
-  background-color: #528D4F;
+  background-color: #528d4f;
 }
 
 .key-close {
-  background-color: #B49E3B;
+  background-color: #b49e3b;
 }
 
 .key-wrong {
-  background-color: #3B3B3C;
+  background-color: #3b3b3c;
 }
 
 .long-key {
@@ -184,11 +193,11 @@ button {
 }
 
 .btn-black {
-  background-color: #3B3B3C;
+  background-color: #3b3b3c;
 }
 
 .btn-green {
-  background-color: #528D4F;
+  background-color: #528d4f;
 }
 
 .btn-black:hover {
@@ -203,35 +212,10 @@ button {
 
 @media (max-width: 830px) {
   .tile {
-    padding: 20px;
-    width: 20px;
-    height: 20px;
-    font-size: 30px;
-  }
-
-  .keyboard {
-    gap: 8px;
-  }
-
-  .keyboard-row {
-    gap: 8px;
-  }
-
-  .key {
-    padding: 20px;
-    width: 6px;
-    height: 20px;
-    font-size: 20px;
-  }
-
-  .long-key {
-    width: 25px;
-    font-size: 14px;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 15px 30px;
+    padding: 12px;
+    width: 12px;
+    height: 12px;
+    font-size: 18px;
   }
 }
 
@@ -314,7 +298,7 @@ button {
   }
 
   .board {
-    margin-top: 10px;
+    margin: 10px 5px;
   }
 
   .h1 {
