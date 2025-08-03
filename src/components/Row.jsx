@@ -6,11 +6,16 @@ export const Row = ({ activeRow, word, attempts, rowNum }) => {
     let active = activeRow === rowNum;
 
     return (
-        <>
-            {active ? (
+        <>            {active ? (
                 <div className='row'>
                     {letters.map((letter, index) => (
-                        <Tile key={index} active={active} letter={letter} pos={index.toString()} />
+                        <Tile 
+                            key={index} 
+                            active={active} 
+                            letter={letter} 
+                            pos={index.toString()} 
+                            attempt={word}
+                        />
                     ))}
                 </div>
             ) : (
@@ -19,7 +24,8 @@ export const Row = ({ activeRow, word, attempts, rowNum }) => {
                         <Tile 
                             key={index}
                             letter={attempts[rowNum] ? attempts[rowNum].charAt(index) : ''} 
-                            pos={index.toString()} 
+                            pos={index.toString()}
+                            attempt={attempts[rowNum] || ''}
                         />
                     ))}
                 </div>
