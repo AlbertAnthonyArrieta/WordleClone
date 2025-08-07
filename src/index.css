@@ -2,10 +2,9 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: url('./assets/images/background.png') no-repeat center center fixed;
+  background: url('./assets/images/bgzine.png') no-repeat center center fixed;
   background-size: cover;
 
   font-synthesis: none;
@@ -105,32 +104,10 @@ h1 {
   border-radius: 2px;
   font-size: 24px;
   font-weight: bold;
-  flex-shrink: 0;
-  position: relative;
-  background-blend-mode: overlay;
+  flex-shrink: 0;  position: relative;
   background-size: cover;
   background-position: center;
-  background-color: transparent;
   color: #000000;
-}
-
-.tile-status {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-}
-
-.status-overlay {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
 }
 
 .tile::before {
@@ -214,7 +191,7 @@ h1 {
 }
 
 .key-wrong {
-  background-color: #f34848;
+  background-color: #3b3b3c;
 }
 
 .long-key {
@@ -277,14 +254,13 @@ button {
   .body {
     justify-content: center;
     align-items: center;
-  }
-
-  .header {
-    margin-top: 50px;
+  }  .header {
+    margin-top: 120px;
   }
 
   .game {
     margin: 0;
+    padding-top: 30px;
   }
 
   .tile {
@@ -349,7 +325,7 @@ button {
 
 @media (max-width: 510px) {
   .header {
-    margin-top: 20px;
+    margin-top: 100px;
   }
 
   .title {

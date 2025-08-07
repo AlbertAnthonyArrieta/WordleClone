@@ -12,7 +12,7 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 function App() {
 
   const [gameState, setGameState] = useState(0);
-  const [target, setTarget] = useState("YELLOWLIGHTS"); // Change target word to 12 letters
+  const [target, setTarget] = useState("KNIGHTSPELLS"); // Top secret super secret word YOU ARE NOT SUPPOSED TO KNOW
   const [input, setInput] = useState('');
   const [activeRow, setActiveRow] = useState(0);
   const [attempts, setAttempts] = useState([]);
