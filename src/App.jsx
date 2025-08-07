@@ -114,7 +114,7 @@ function App() {
   // Copy to Clipboard Function
   const copyToClipboard = () => {
     if (gameState === 1) {
-      navigator.clipboard.writeText("Wordle: I guessed the word on attempt number " + activeRow + "! Can you do better? https://wurdle-4b514c.netlify.app/")
+      navigator.clipboard.writeText("CM Zine Riddle: I guessed the word on attempt number " + activeRow + "! Can you do better? https://cm-zine-riddle.netlify.app/")
         .then(() => {
           console.log('Text copied to clipboard');
         })
@@ -122,7 +122,7 @@ function App() {
           console.error('Could not copy text: ', err);
         });
     } else {
-      navigator.clipboard.writeText("I'm am so ashamed that I did not guess the word! Can you do better? https://wurdle-4b514c.netlify.app/")
+      navigator.clipboard.writeText("I'm am so ashamed that I did not guess the word! Can you do better? https://cm-zine-riddle.netlify.app/")
         .then(() => {
           console.log('Text copied to clipboard');
         })
