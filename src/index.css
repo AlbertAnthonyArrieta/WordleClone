@@ -101,15 +101,14 @@ h1 {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  width: 35px;
-  height: 35px;
+  width: 35px;  height: 35px;
   border-radius: 2px;
   font-size: 24px;
   font-weight: bold;
   flex-shrink: 0;  position: relative;
   background-size: cover;
   background-position: center;
-  color: #343434;
+  color: white;
 }
 
 .tile::before {

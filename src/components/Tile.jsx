@@ -63,12 +63,11 @@ export const Tile = ({ active, letter, pos, attempt }) => {
             default:
                 return tile1Default;
         }
-    };
-
-    const tileStyle = {
+    };    const tileStyle = {
         backgroundImage: getTileImage() ? `url(${getTileImage()})` : 'none',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        color: active ? '#343434' : 'white'
     };
 
     return (
