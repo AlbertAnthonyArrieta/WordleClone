@@ -1,17 +1,18 @@
 import { useContext, useState, useEffect } from "react"
 import TargetContext from "../contexts/TargetContext";
-import tile1Default from '/assets/images/Tile1.svg';
-import tile1Correct from '/assets/images/Tile1-correct.svg';
-import tile1Close from '/assets/images/Tile1-close.svg';
-import tile1Wrong from '/assets/images/Tile1-wrong.svg';
-import tile2Default from '/assets/images/Tile2.svg';
-import tile2Correct from '/assets/images/Tile2-correct.svg';
-import tile2Close from '/assets/images/Tile2-close.svg';
-import tile2Wrong from '/assets/images/Tile2-wrong.svg';
-import tile3Default from '/assets/images/Tile3.svg';
-import tile3Correct from '/assets/images/Tile3-correct.svg';
-import tile3Close from '/assets/images/Tile3-close.svg';
-import tile3Wrong from '/assets/images/Tile3-wrong.svg';
+// Import from src so Vite bundles and rewrites URLs with the correct base
+import tile1Default from '../assets/images/Tile1-close.svg';
+import tile1Correct from '../assets/images/Tile1-correct.svg';
+import tile1Close from '../assets/images/Tile1-close.svg';
+import tile1Wrong from '../assets/images/Tile1-wrong.svg';
+import tile2Default from '../assets/images/Tile2.svg';
+import tile2Correct from '../assets/images/Tile2-correct.svg';
+import tile2Close from '../assets/images/Tile2-close.svg';
+import tile2Wrong from '../assets/images/Tile2-wrong.svg';
+import tile3Default from '../assets/images/Tile3.svg';
+import tile3Correct from '../assets/images/Tile3-correct.svg';
+import tile3Close from '../assets/images/Tile3-close.svg';
+import tile3Wrong from '../assets/images/Tile3-wrong.svg';
 
 export const Tile = ({ active, letter, pos, attempt }) => {
     const target = useContext(TargetContext);
@@ -63,7 +64,10 @@ export const Tile = ({ active, letter, pos, attempt }) => {
             default:
                 return tile1Default;
         }
-    };    const tileStyle = {
+    };
+    // Compute status once per render
+    const status = getTileStatus();
+    const tileStyle = {
         backgroundImage: getTileImage() ? `url(${getTileImage()})` : 'none',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
