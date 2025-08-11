@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react"
 import TargetContext from "../contexts/TargetContext";
 // Import from src so Vite bundles and rewrites URLs with the correct base
-import tile1Default from '../assets/images/Tile1-close.svg';
+import tile1Default from '../assets/images/Tile1close.svg';
 import tile1Correct from '../assets/images/Tile1-correct.svg';
-import tile1Close from '../assets/images/Tile1-close.svg';
+import tile1Close from '../assets/images/Tile1close.svg';
 import tile1Wrong from '../assets/images/Tile1-wrong.svg';
 import tile2Default from '../assets/images/Tile2.svg';
 import tile2Correct from '../assets/images/Tile2-correct.svg';
