@@ -1,17 +1,17 @@
 import { useContext, useState, useEffect } from "react"
 import TargetContext from "../contexts/TargetContext";
-import tile1Default from '../assets/images/Tile1.svg';
-import tile1Correct from '../assets/images/Tile1-correct.svg';
-import tile1Close from '../assets/images/Tile1-close.svg';
-import tile1Wrong from '../assets/images/Tile1-wrong.svg';
-import tile2Default from '../assets/images/Tile2.svg';
-import tile2Correct from '../assets/images/Tile2-correct.svg';
-import tile2Close from '../assets/images/Tile2-close.svg';
-import tile2Wrong from '../assets/images/Tile2-wrong.svg';
-import tile3Default from '../assets/images/Tile3.svg';
-import tile3Correct from '../assets/images/Tile3-correct.svg';
-import tile3Close from '../assets/images/Tile3-close.svg';
-import tile3Wrong from '../assets/images/Tile3-wrong.svg';
+import tile1Default from '/src/assets/images/Tile1.svg';
+import tile1Correct from '/src/assets/images/Tile1-correct.svg';
+import tile1Close from '/src/assets/images/Tile1-close.svg';
+import tile1Wrong from '/src/assets/images/Tile1-wrong.svg';
+import tile2Default from '/src/assets/images/Tile2.svg';
+import tile2Correct from '/src/assets/images/Tile2-correct.svg';
+import tile2Close from '/src/assets/images/Tile2-close.svg';
+import tile2Wrong from '/src/assets/images/Tile2-wrong.svg';
+import tile3Default from '/src/assets/images/Tile3.svg';
+import tile3Correct from '/src/assets/images/Tile3-correct.svg';
+import tile3Close from '/src/assets/images/Tile3-close.svg';
+import tile3Wrong from '/src/assets/images/Tile3-wrong.svg';
 
 export const Tile = ({ active, letter, pos, attempt }) => {
     const target = useContext(TargetContext);
