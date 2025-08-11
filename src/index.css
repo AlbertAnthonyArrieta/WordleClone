@@ -4,7 +4,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: url('./assets/images/bgzine.png') no-repeat center center fixed;
+  background: url('/assets/bgzine.png') no-repeat center center fixed;
   background-size: cover;
 
   font-synthesis: none;

@@ -1,18 +1,40 @@
 import { useContext, useState, useEffect } from "react"
 import TargetContext from "../contexts/TargetContext";
-// Import from src so Vite bundles and rewrites URLs with the correct base
-import tile1Default from '../assets/images/Tile1close.svg';
-import tile1Correct from '../assets/images/Tile1-correct.svg';
-import tile1Close from '../assets/images/Tile1close.svg';
-import tile1Wrong from '../assets/images/Tile1-wrong.svg';
-import tile2Default from '../assets/images/Tile2.svg';
-import tile2Correct from '../assets/images/Tile2-correct.svg';
-import tile2Close from '../assets/images/Tile2-close.svg';
-import tile2Wrong from '../assets/images/Tile2-wrong.svg';
-import tile3Default from '../assets/images/Tile3.svg';
-import tile3Correct from '../assets/images/Tile3-correct.svg';
-import tile3Close from '../assets/images/Tile3-close.svg';
-import tile3Wrong from '../assets/images/Tile3-wrong.svg';
+// Assets now served from public folder - no imports needed, use direct paths
+const tile1Default = '/assets/Tile1.svg';
+const tile1Correct = '/assets/Tile1-correct.svg';
+const tile1Close = '/assets/Tile1close.svg';
+const tile1Wrong = '/assets/Tile1-wrong.svg';
+const tile2Default = '/assets/Tile2.svg';
+const tile2Correct = '/assets/Tile2-correct.svg';
+const tile2Close = '/assets/Tile2-close.svg';
+const tile2Wrong = '/assets/Tile2-wrong.svg';
+const tile3Default = '/assets/Tile3.svg';
+const tile3Correct = '/assets/Tile3-correct.svg';
+const tile3Close = '/assets/Tile3-close.svg';
+const tile3Wrong = '/assets/Tile3-wrong.svg';
+
+// Assets served from public folder - all assets will be available at runtime
+const tileAssets = {
+    tile1: {
+        default: tile1Default,
+        correct: tile1Correct, 
+        close: tile1Close,
+        wrong: tile1Wrong,
+    },
+    tile2: {
+        default: tile2Default,
+        correct: tile2Correct,
+        close: tile2Close, 
+        wrong: tile2Wrong,
+    },
+    tile3: {
+        default: tile3Default,
+        correct: tile3Correct,
+        close: tile3Close,
+        wrong: tile3Wrong,
+    }
+};
 
 export const Tile = ({ active, letter, pos, attempt }) => {
     const target = useContext(TargetContext);
@@ -47,22 +69,22 @@ export const Tile = ({ active, letter, pos, attempt }) => {
         
         switch(selectedTile) {
             case 1:
-                return status === 'correct' ? tile1Correct :
-                       status === 'close' ? tile1Close :
-                       status === 'wrong' ? tile1Wrong :
-                       tile1Default;
+                return status === 'correct' ? tileAssets.tile1.correct :
+                       status === 'close' ? tileAssets.tile1.close :
+                       status === 'wrong' ? tileAssets.tile1.wrong :
+                       tileAssets.tile1.default;
             case 2:
-                return status === 'correct' ? tile2Correct :
-                       status === 'close' ? tile2Close :
-                       status === 'wrong' ? tile2Wrong :
-                       tile2Default;
+                return status === 'correct' ? tileAssets.tile2.correct :
+                       status === 'close' ? tileAssets.tile2.close :
+                       status === 'wrong' ? tileAssets.tile2.wrong :
+                       tileAssets.tile2.default;
             case 3:
-                return status === 'correct' ? tile3Correct :
-                       status === 'close' ? tile3Close :
-                       status === 'wrong' ? tile3Wrong :
-                       tile3Default;
+                return status === 'correct' ? tileAssets.tile3.correct :
+                       status === 'close' ? tileAssets.tile3.close :
+                       status === 'wrong' ? tileAssets.tile3.wrong :
+                       tileAssets.tile3.default;
             default:
-                return tile1Default;
+                return tileAssets.tile1.default;
         }
     };
     // Compute status once per render
