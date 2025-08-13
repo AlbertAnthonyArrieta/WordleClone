@@ -3,6 +3,8 @@ import './App.css'
 import TargetContext from './contexts/TargetContext.jsx';
 import Row from './components/Row.jsx';
 import Key from './components/Key.jsx';
+import InstructionsModal from './components/InstructionsModal.jsx';
+import RiddleModal from './components/RiddleModal.jsx';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
@@ -114,7 +116,7 @@ function App() {
   // Copy to Clipboard Function
   const copyToClipboard = () => {
     if (gameState === 1) {
-      navigator.clipboard.writeText("CM Zine Riddle: I guessed the word on attempt number " + activeRow + "! Can you do better? https://cm-zine-riddle.netlify.app/")
+      navigator.clipboard.writeText("I beat the CM Zine Riddle on attempt number " + activeRow + "! Can you do better? https://cm-zine-riddle.netlify.app/")
         .then(() => {
           console.log('Text copied to clipboard');
         })
@@ -122,7 +124,7 @@ function App() {
           console.error('Could not copy text: ', err);
         });
     } else {
-      navigator.clipboard.writeText("I'm am so ashamed that I did not guess the word! Can you do better? https://cm-zine-riddle.netlify.app/")
+      navigator.clipboard.writeText("I did not guess the answer! Can you do better? https://cm-zine-riddle.netlify.app/")
         .then(() => {
           console.log('Text copied to clipboard');
         })
@@ -154,6 +156,8 @@ function App() {
 
   return (
     <>
+      <InstructionsModal />
+      <RiddleModal />
       <div className='header'>
         <h1 className="title">CM ZINE RIDDLE</h1>
         <div className='popup'>{popupText}</div>
