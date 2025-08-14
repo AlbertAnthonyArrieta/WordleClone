@@ -20,6 +20,11 @@ function App() {
   const [attempts, setAttempts] = useState([]);
   const [popupText, setPopupText] = useState('Not Enough Letters.');
 
+  // Intro sequence state
+  const [showRiddleModal, setShowRiddleModal] = useState(false);
+  const [showInstructionsModal, setShowInstructionsModal] = useState(false);
+  const [hasSeenIntro, setHasSeenIntro] = useState(false);
+
 
   // Tap/Click Handlers
   const handleTap = (letter) => {
@@ -132,8 +137,30 @@ function App() {
           console.error('Could not copy text: ', err);
         });
     }
-
   };
+
+  // Intro sequence handlers
+  const handleRiddleModalClose = () => {
+    setShowRiddleModal(false);
+    setShowInstructionsModal(true);
+  };
+
+  const handleInstructionsModalClose = () => {
+    setShowInstructionsModal(false);
+    setHasSeenIntro(true);
+    // Save to localStorage so intro doesn't show again
+    localStorage.setItem('hasSeenIntro', 'true');
+  };
+
+  // Check if user has seen intro before
+  useEffect(() => {
+    const hasSeenIntroBefore = localStorage.getItem('hasSeenIntro');
+    if (!hasSeenIntroBefore) {
+      setShowRiddleModal(true);
+    } else {
+      setHasSeenIntro(true);
+    }
+  }, []);
 
   useEffect(() => {
 
@@ -156,10 +183,17 @@ function App() {
 
   return (
     <>
-      <InstructionsModal />
-      <RiddleModal />
+      <InstructionsModal 
+        isOpen={!hasSeenIntro ? showInstructionsModal : undefined} 
+        onClose={!hasSeenIntro ? handleInstructionsModalClose : undefined} 
+      />
+      <RiddleModal 
+        isOpen={!hasSeenIntro ? showRiddleModal : undefined} 
+        onClose={!hasSeenIntro ? handleRiddleModalClose : undefined} 
+      />
       <div className='header'>
-        <h1 className="title">CM ZINE RIDDLE</h1>
+        <h1 className="title">RIDDLE ME THIS!</h1>
+        <h2 className="subtitle">Six Tries. One riddle. Infinite bragging rights</h2>
         <div className='popup'>{popupText}</div>
       </div>
       <div className='game'>

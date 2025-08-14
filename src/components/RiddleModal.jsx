@@ -2,11 +2,27 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const RiddleModal = () => {
+const RiddleModal = ({ isOpen: externalIsOpen, onClose }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const openModal = () => setIsOpen(true);
-    const closeModal = () => setIsOpen(false);
+    // Use external state if provided, otherwise use internal state
+    const modalIsOpen = externalIsOpen !== undefined ? externalIsOpen : isOpen;
+
+    const openModal = () => {
+        if (externalIsOpen === undefined) {
+            setIsOpen(true);
+        }
+    };
+    
+    const closeModal = () => {
+        if (externalIsOpen !== undefined) {
+            // If controlled externally, call the external close handler
+            if (onClose) onClose();
+        } else {
+            // If using internal state, close normally
+            setIsOpen(false);
+        }
+    };
 
     return (
         <>
@@ -16,11 +32,11 @@ const RiddleModal = () => {
             </button>
 
             {/* Modal Overlay */}
-            {isOpen && (
+            {modalIsOpen && (
                 <div className="modal-overlay" onClick={closeModal}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
-                            <h2>The Riddle</h2>
+                            <h2>Solve this riddle!</h2>
                             <button className="close-button" onClick={closeModal}>
                                 <FontAwesomeIcon icon={faTimes} />
                             </button>
@@ -29,7 +45,6 @@ const RiddleModal = () => {
                         <div className="modal-body">
                             <div className="riddle-section">
                                 <div className="riddle-text">
-                                    <h3> Solve this riddle!:</h3>
                                     <blockquote className="riddle-quote">
                                         <p><em>"In the space between safety and sin, I perform my ritual dance,</em></p>
                                         <p><em>A nervous percussion on metal above, as seconds slip past in a trance.</em></p>
@@ -47,10 +62,6 @@ const RiddleModal = () => {
                                 <div className="riddle-hint">
                                     <h4>💡 Hint:</h4>
                                     <p>The answer is <strong>two words</strong>, each <strong>6 letters long</strong>.</p>
-                                </div>
-
-                                <div className="riddle-footer">
-                                    <p><small>🎯 Fill in all 12 letters to solve the riddle!</small></p>
                                 </div>
                             </div>
                         </div>
