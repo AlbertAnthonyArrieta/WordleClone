@@ -14,7 +14,7 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 function App() {
 
   const [gameState, setGameState] = useState(0);
-  const [target, setTarget] = useState("YELLOWLIGHTS"); // Top secret super secret word YOU ARE NOT SUPPOSED TO KNOW
+  const [target, setTarget] = useState("DEMONSHUNTER"); // Top secret super secret word YOU ARE NOT SUPPOSED TO KNOW
   const [input, setInput] = useState('');
   const [activeRow, setActiveRow] = useState(0);
   const [attempts, setAttempts] = useState([]);
