@@ -69,9 +69,10 @@ const InstructionsModal = ({ isOpen: externalIsOpen, onClose }) => {
                                     </div>
                                     <div className="color-legend">
                                          <p>The answer for this example is <span style={{ fontWeight: 'bold' }}>"UNRAVELED"</span></p>
-                                        <p><span className="legend-green">■</span> <strong>Green:</strong> Letter is correct and in the right position</p>
-                                        <p><span className="legend-yellow">■</span> <strong>Yellow:</strong> Letter is in the answer but wrong position</p>
-                                        <p><span className="legend-grey">■</span> <strong>Grey:</strong> Letter is not in the answer</p>
+                                        <p><span className="legend-green">■</span> <strong>Green:</strong> Green means the letter is in the answer and in the right spot.</p>
+                                        <p><span className="legend-yellow">■</span> <strong>Yellow:</strong> Yellow means the leter is in the answer  but int he wrong spot.</p>
+                                        <p><span className="legend-grey">■</span> <strong>Grey:</strong> Gray means the letter isn't in the answer at all.</p>
+                                        <p>Use the clues from each guess to narrow it down. You have six guesses to crack it.</p>
                                     </div>
                                 </div>
                             </div>

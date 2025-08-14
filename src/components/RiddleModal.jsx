@@ -61,6 +61,7 @@ const RiddleModal = ({ isOpen: externalIsOpen, onClose }) => {
                                 
                                 <div className="riddle-hint">
                                     <h4>💡 Hint:</h4>
+                                    <p>Somewhere on the magazine page you scanned might be a little visual nod to the answer - spot it and you might just solve it faster.</p>
                                     <p>The answer is <strong>two words</strong>, each <strong>6 letters long</strong>.</p>
                                 </div>
                             </div>
