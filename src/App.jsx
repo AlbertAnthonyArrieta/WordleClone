@@ -252,21 +252,31 @@ function App() {
           </div>
 
         ) : gameState === 1 ? (
-          <div>
-            <h2>You WIN!</h2>
-            <h1>The word is <span>{target}</span></h1>
-            <div className='btn-container'>
-              <button className='btn-green' onClick={copyToClipboard} style={{ color: 'white' }}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
-              <button className='btn-black' onClick={resetGame} style={{ color: 'white' }}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
+          <div className="result-page win-page">
+            <div className="result-content">
+              <h2 className="result-title win-title">🎉 You WIN! 🎉</h2>
+              <div className="result-word-container">
+                <p className="result-word-label">The word is</p>
+                <h1 className="result-word">{target}</h1>
+              </div>
+              <div className='btn-container'>
+                <button className='btn-green' onClick={copyToClipboard} style={{ color: 'white' }}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
+                <button className='btn-black' onClick={resetGame} style={{ color: 'white' }}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
+              </div>
             </div>
           </div>
         ) : gameState === 2 ? (
-          <div>
-            <h2>You LOST! The word is</h2>
-            <h1>{target}</h1>
-            <div className='btn-container'>
-              <button className='btn-green' onClick={copyToClipboard} style={{ color: 'white' }}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
-              <button className='btn-black' onClick={resetGame} style={{ color: 'white' }}>PLAY AGAIN </button>
+          <div className="result-page lose-page">
+            <div className="result-content">
+              <h2 className="result-title lose-title">😔 You LOST!</h2>
+              <div className="result-word-container">
+                <p className="result-word-label">The word was</p>
+                <h1 className="result-word">{target}</h1>
+              </div>
+              <div className='btn-container'>
+                <button className='btn-green' onClick={copyToClipboard} style={{ color: 'white' }}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
+                <button className='btn-black' onClick={resetGame} style={{ color: 'white' }}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
+              </div>
             </div>
           </div>
         ) : (

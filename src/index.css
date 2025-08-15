@@ -170,6 +170,12 @@ h1 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Larger modal specifically for riddle */
+.riddle-modal-content {
+  max-width: 700px;
+  max-height: 90vh;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -288,31 +294,30 @@ h1 {
 
 /* Color legend styles */
 .color-legend {
-  margin-top: 15px;
   width: 100%;
 }
 
 .color-legend p {
-  margin: 8px 0;
   font-size: 14px;
   display: flex;
   align-items: center;
+  text-align: left;
   gap: 8px;
 }
 
 .legend-green {
   color: #538d4e;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .legend-yellow {
   color: #b59f3b;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .legend-grey {
   color: #3a3a3c;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 /* Riddle-specific styles */
@@ -328,35 +333,73 @@ h1 {
 }
 
 .riddle-quote {
-  background: rgba(38, 38, 38, 0.1);
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 25px;
+  margin: 20px 0;
   font-style: italic;
+  position: relative;
+}
+
+.riddle-quote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.riddle-quote::after {
+  content: '"';
+  position: absolute;
+  bottom: -20px;
+  right: 15px;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
 }
 
 .riddle-quote p {
-  margin: 8px 0;
-  font-size: 13px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  margin: 12px 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.95);
+  padding-left: 5px;
+}
+
+.riddle-quote p:first-child {
+  margin-top: 15px;
+}
+
+.riddle-quote p:last-child {
+  margin-bottom: 15px;
 }
 
 .riddle-hint {
-  background: rgba(0, 150, 255, 0.1);
-  border: 1px solid rgba(0, 150, 255, 0.3);
-  padding: 15px;
-  border-radius: 8px;
-  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 25px 0;
 }
 
 .riddle-hint h4 {
-  color: #00bfff;
-  margin: 0 0 10px 0;
-  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .riddle-hint p {
-  margin: 5px 0;
-  font-size: 14px;
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .riddle-footer {
@@ -453,6 +496,7 @@ h1 {
   margin: 40px;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 40px; /* Bottom padding for desktop */
 }
 
 .keyboard-row {
@@ -492,6 +536,77 @@ button {
   padding: 20px 40px;
   border: none;
   border-radius: 5px;
+}
+
+/* Result Page Styles */
+.result-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 40px 20px;
+}
+
+.result-content {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.result-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-family: 'Rubik Doodle Shadow', system-ui;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.win-title {
+  color: #4ade80;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lose-title {
+  color: #f87171;
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.result-word-container {
+  margin: 40px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.result-word-label {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.result-word {
+  font-size: 56px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Rubik Doodle Shadow', system-ui;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 4px;
+  line-height: 1.1;
+  word-break: break-all;
 }
 
 .btn-container {
@@ -573,6 +688,7 @@ button {
 
   .keyboard {
     margin: 20px 0;
+    padding-bottom: 0; /* Remove bottom padding on mobile */
   }
 
   .long-key {
@@ -611,6 +727,50 @@ button {
     max-height: 85vh;
   }
 
+  /* Riddle modal responsive */
+  .riddle-modal-content {
+    max-width: 95vw;
+    margin: 5px;
+  }
+
+  .riddle-quote {
+    padding: 20px;
+    margin: 15px 0;
+  }
+
+  .riddle-quote::before,
+  .riddle-quote::after {
+    font-size: 40px;
+  }
+
+  .riddle-quote::before {
+    top: -5px;
+    left: 10px;
+  }
+
+  .riddle-quote::after {
+    bottom: -15px;
+    right: 10px;
+  }
+
+  .riddle-quote p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .riddle-hint {
+    padding: 15px;
+    margin: 20px 0;
+  }
+
+  .riddle-hint h4 {
+    font-size: 16px;
+  }
+
+  .riddle-hint p {
+    font-size: 14px;
+  }
+
   .modal-header {
     padding: 15px;
   }
@@ -644,6 +804,28 @@ button {
     min-width: auto;
     font-size: 13px;
   }
+
+  /* Result page responsive styles */
+  .result-title {
+    font-size: 36px;
+    margin-bottom: 25px;
+  }
+
+  .result-word-container {
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .result-word-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .result-word {
+    font-size: 40px;
+    letter-spacing: 2px;
+  }
 }
 
 
@@ -656,6 +838,7 @@ button {
 
   .keyboard {
     gap: 5px;
+    padding-bottom: 0; /* Remove bottom padding on mobile */
     /* margin-top: 100px; */
   }
 
@@ -695,6 +878,62 @@ button {
     top: 12px;
     left: 12px;
   }
+
+  /* Riddle modal responsive for small screens */
+  .riddle-quote {
+    padding: 15px;
+    margin: 12px 0;
+  }
+
+  .riddle-quote::before,
+  .riddle-quote::after {
+    font-size: 35px;
+  }
+
+  .riddle-quote p {
+    font-size: 13px;
+    margin: 10px 0;
+  }
+
+  .riddle-hint {
+    padding: 12px;
+    margin: 15px 0;
+  }
+
+  .riddle-hint h4 {
+    font-size: 15px;
+  }
+
+  .riddle-hint p {
+    font-size: 13px;
+  }
+
+  /* Result page responsive styles for smaller screens */
+  .result-page {
+    padding: 20px 15px;
+    min-height: 50vh;
+  }
+
+  .result-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .result-word-container {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .result-word-label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .result-word {
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
 }
 
 @media (max-width: 510px) {
@@ -719,8 +958,8 @@ button {
 
   .tile {
     padding: 6px;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     font-size: 14px;
   }
 
@@ -734,6 +973,7 @@ button {
 
   .keyboard {
     gap: 4px;
+    padding-bottom: 0; /* Remove bottom padding on mobile */
   }
 
   .keyboard-row {
@@ -771,5 +1011,35 @@ button {
     font-size: 18px;
     top: 10px;
     left: 10px;
+  }
+
+  /* Result page responsive styles for smallest screens */
+  .result-page {
+    padding: 15px 10px;
+    min-height: 45vh;
+  }
+
+  .result-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    line-height: 1.1;
+  }
+
+  .result-word-container {
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .result-word-label {
+    font-size: 12px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .result-word {
+    font-size: 26px;
+    letter-spacing: 0.5px;
+    line-height: 1;
   }
 }

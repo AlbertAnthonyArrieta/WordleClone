@@ -34,7 +34,7 @@ const RiddleModal = ({ isOpen: externalIsOpen, onClose }) => {
             {/* Modal Overlay */}
             {modalIsOpen && (
                 <div className="modal-overlay" onClick={closeModal}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-content riddle-modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h2>Solve this riddle!</h2>
                             <button className="close-button" onClick={closeModal}>
@@ -60,7 +60,7 @@ const RiddleModal = ({ isOpen: externalIsOpen, onClose }) => {
                                 </div>
                                 
                                 <div className="riddle-hint">
-                                    <h4>💡 Hint:</h4>
+                                    <h4>Hint:</h4>
                                     <p>Somewhere on the magazine page you scanned might be a little visual nod to the answer - spot it and you might just solve it faster.</p>
                                     <p>The answer is <strong>two words</strong>, each <strong>6 letters long</strong>.</p>
                                 </div>
