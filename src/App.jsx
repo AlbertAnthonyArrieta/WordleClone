@@ -28,13 +28,11 @@ function App() {
   // Share tooltip state
   const [showShareTooltip, setShowShareTooltip] = useState(false);
 
-
   // Tap/Click Handlers
   const handleTap = (letter) => {
     if (input.length < 12) {
       setInput(input + letter);
     }
-    
   }
 
   // Delete selected Letter
@@ -44,7 +42,6 @@ function App() {
 
   // Reset Game Function
   const resetGame = () => {
-    console.log("Game Reset...");
     setActiveRow(0);
     setAttempts([]);
     setInput('');
@@ -57,29 +54,6 @@ function App() {
       document.querySelector('.popup').style.display = 'none';
       setPopupText('');
     }, 2000);
-  }
-
-  const collectResults = () => {
-    for (let i = 0; i < attempts.length; i++) {
-      let currentAttempt = attempts[i];
-      let currentRow = '';
-      for (let j = 0; j < currentAttempt.length+1; j++) {
-        if (currentAttempt[j] === target[j]) {
-          currentRow = currentRow + 'G';
-        } else if (target.includes(currentAttempt[j])) {
-          currentRow = currentRow + 'Y';
-        } else {
-          currentRow = currentRow + 'B';
-        }
-      }
-      setResults([...results, currentRow]);
-    }
-    console.log(results[0]);
-    console.log(results[1]);
-    console.log(results[2]);
-    console.log(results[3]);
-    console.log(results[4]);
-    console.log(results[5]);
   }
 
   // Submt Word and verification
@@ -129,7 +103,6 @@ function App() {
     
     navigator.clipboard.writeText(shareText)
       .then(() => {
-        console.log('Text copied to clipboard');
         // Show tooltip
         setShowShareTooltip(true);
         // Hide tooltip after 2 seconds
@@ -206,7 +179,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-
     // Handle keyboard inputs
     const handleKeyDown = (event) => {
       if (/^[a-zA-Z]$/.test(event.key)) {
@@ -287,9 +259,7 @@ function App() {
                   <Key onClick={handleTap} letter='N' attempts={attempts} activeRow={activeRow} />
                   <Key onClick={handleTap} letter='M' attempts={attempts} activeRow={activeRow} />
                   <div onClick={handleDelete} className='key long-key key-default'><FontAwesomeIcon icon={faDeleteLeft} /></div>
-
                 </div>
-
               </div>
             </TargetContext.Provider>
           </div>
