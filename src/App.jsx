@@ -124,7 +124,7 @@ function App() {
   const renderResultPage = (isWin) => {
     const pageClass = isWin ? 'win-page' : 'lose-page';
     const titleClass = isWin ? 'win-title' : 'lose-title';
-    const title = isWin ? '🎉 You WIN! 🎉' : '😔 You LOST!';
+    const title = isWin ? 'You Solved it!' : 'Better luck next time!';
     const label = isWin ? 'The word is' : 'The word was';
 
     return (

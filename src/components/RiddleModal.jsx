@@ -49,7 +49,7 @@ const RiddleModal = ({ isOpen: externalIsOpen, onClose }) => {
                                         <p><em>"In the space between safety and sin, I perform my ritual dance,</em></p>
                                         <p><em>A nervous percussion on metal above, as seconds slip past in a trance.</em></p>
                                         <p><em>Neither red's full stop nor green's eager go can command what I do,</em></p>
-                                        <p><em>But when amber eyes blink their warning, my knuckles know what they must puursue.</em></p>
+                                        <p><em>But when amber eyes blink their warning, my knuckles know what they must pursue.</em></p>
                                         <p><em>I race against time's cruel countdown, my fingers drumming overhead,</em></p>
                                         <p><em>A superstitious beat that echoes the fear of futures I dread,</em></p>
                                         <p><em>Some say I'm chasing luck's favor, others think I've lost my mind,</em></p>

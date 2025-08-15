@@ -51,7 +51,7 @@ const InstructionsModal = ({ isOpen: externalIsOpen, onClose }) => {
                 <h3>How to play:</h3>
                 <ul>
                   <li>
-                    Read the riddle, (click the light bulb button!) that's your puzzle.
+                    Read the riddle, (click the puzzle piece button!) that's your puzzle.
                   </li>
                   <li>
                     Type your guess for the riddle's answer into the grid.
