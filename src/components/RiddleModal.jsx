@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPuzzlePiece, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const RiddleModal = ({ isOpen: externalIsOpen, onClose }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const RiddleModal = ({ isOpen: externalIsOpen, onClose }) => {
         <>
             {/* Riddle Button */}
             <button className="riddle-button" onClick={openModal} title="View Riddle">
-                <FontAwesomeIcon icon={faLightbulb} />
+                <FontAwesomeIcon icon={faPuzzlePiece} />
             </button>
 
             {/* Modal Overlay */}

@@ -25,6 +25,9 @@ function App() {
   const [showInstructionsModal, setShowInstructionsModal] = useState(false);
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
 
+  // Share tooltip state
+  const [showShareTooltip, setShowShareTooltip] = useState(false);
+
 
   // Tap/Click Handlers
   const handleTap = (letter) => {
@@ -120,23 +123,63 @@ function App() {
 
   // Copy to Clipboard Function
   const copyToClipboard = () => {
-    if (gameState === 1) {
-      navigator.clipboard.writeText("I beat the CM Zine Riddle on attempt number " + activeRow + "! Can you do better? https://cm-zine-riddle.netlify.app/")
-        .then(() => {
-          console.log('Text copied to clipboard');
-        })
-        .catch(err => {
-          console.error('Could not copy text: ', err);
-        });
-    } else {
-      navigator.clipboard.writeText("I did not guess the answer! Can you do better? https://cm-zine-riddle.netlify.app/")
-        .then(() => {
-          console.log('Text copied to clipboard');
-        })
-        .catch(err => {
-          console.error('Could not copy text: ', err);
-        });
-    }
+    const shareText = gameState === 1 
+      ? `I beat the CM Zine Riddle on attempt number ${activeRow + 1}! Can you do better? https://cm-zine-riddle.netlify.app/`
+      : "I did not guess the answer! Can you do better? https://cm-zine-riddle.netlify.app/";
+    
+    navigator.clipboard.writeText(shareText)
+      .then(() => {
+        console.log('Text copied to clipboard');
+        // Show tooltip
+        setShowShareTooltip(true);
+        // Hide tooltip after 2 seconds
+        setTimeout(() => {
+          setShowShareTooltip(false);
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+  };
+
+  // Format target word with space between the two 6-letter words
+  const formatTargetWord = () => {
+    return `${target.slice(0, 6)} ${target.slice(6)}`;
+  };
+
+  // Render result page (win or lose)
+  const renderResultPage = (isWin) => {
+    const pageClass = isWin ? 'win-page' : 'lose-page';
+    const titleClass = isWin ? 'win-title' : 'lose-title';
+    const title = isWin ? '🎉 You WIN! 🎉' : '😔 You LOST!';
+    const label = isWin ? 'The word is' : 'The word was';
+
+    return (
+      <div className={`result-page ${pageClass}`}>
+        <div className="result-content">
+          <h2 className={`result-title ${titleClass}`}>{title}</h2>
+          <div className="result-word-container">
+            <p className="result-word-label">{label}</p>
+            <h1 className="result-word">{formatTargetWord()}</h1>
+          </div>
+          <div className='btn-container'>
+            <div className="share-button-container">
+              <button className='btn-green' onClick={copyToClipboard} style={{ color: 'white' }}>
+                SHARE <FontAwesomeIcon icon={faShareNodes} />
+              </button>
+              {showShareTooltip && (
+                <div className="share-tooltip">
+                  Copied to clipboard!
+                </div>
+              )}
+            </div>
+            <button className='btn-black' onClick={resetGame} style={{ color: 'white' }}>
+              PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   // Intro sequence handlers
@@ -252,33 +295,9 @@ function App() {
           </div>
 
         ) : gameState === 1 ? (
-          <div className="result-page win-page">
-            <div className="result-content">
-              <h2 className="result-title win-title">🎉 You WIN! 🎉</h2>
-              <div className="result-word-container">
-                <p className="result-word-label">The word is</p>
-                <h1 className="result-word">{target}</h1>
-              </div>
-              <div className='btn-container'>
-                <button className='btn-green' onClick={copyToClipboard} style={{ color: 'white' }}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
-                <button className='btn-black' onClick={resetGame} style={{ color: 'white' }}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
-              </div>
-            </div>
-          </div>
+          renderResultPage(true)
         ) : gameState === 2 ? (
-          <div className="result-page lose-page">
-            <div className="result-content">
-              <h2 className="result-title lose-title">😔 You LOST!</h2>
-              <div className="result-word-container">
-                <p className="result-word-label">The word was</p>
-                <h1 className="result-word">{target}</h1>
-              </div>
-              <div className='btn-container'>
-                <button className='btn-green' onClick={copyToClipboard} style={{ color: 'white' }}>SHARE <FontAwesomeIcon icon={faShareNodes} /></button>
-                <button className='btn-black' onClick={resetGame} style={{ color: 'white' }}>PLAY AGAIN <FontAwesomeIcon icon={faRotateRight} /></button>
-              </div>
-            </div>
-          </div>
+          renderResultPage(false)
         ) : (
           <div>
             <h1>ERROR: Invalid Game State</h1>
